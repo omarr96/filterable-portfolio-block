@@ -1,0 +1,213 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-df-filterable-block {
+	// background-color: #21759b;
+	// color: #fff;
+	// padding: 2px;
+
+	$primary: #1D054E;;
+	$primary-black: #191C24;
+	$lite-purple: #F0E9FE;
+
+	h1,h2,h3,h4,h5,h6,p{
+		margin: 0;
+		padding: 0;
+		color: $primary-black;
+		line-height: 1.5;
+	}
+	img{
+		max-width: 100%;
+		height: auto;
+	}
+	.df_fb-show{
+		opacity: 1 !important;
+		z-index: 99 !important;
+	}
+
+	.df_fb-load-more{
+		padding: 40px 0px;
+		text-align: center;
+	}
+	#loadMoreButton:disabled {
+		background-color: gray; /* Change background color */
+		cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+	}
+
+	#df_fb-preloader {
+		height: 600px;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		img{
+			width: 100px;
+		}
+	}
+
+	// header content
+	.df_fb-header{
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 42px;
+		flex-wrap: wrap;
+		gap: 20px;
+		h2{
+			color: $primary;
+			font-size: 32px;
+			line-height: 56px;
+			font-weight: 700;
+		}
+		.df_fb-filter-meta{
+			display: flex;
+			gap: 20px;
+			align-items: center;
+			.df_fb-filter-dropdown{
+				position: relative;
+				.df_fb-dropdown-btn{
+					display: flex;
+					justify-content: space-between;
+					border: 1px solid #d0bafc;
+					border-radius: 35px;
+					padding: 12px 20px;
+					cursor: pointer;
+					p{
+						font-size: 14px;
+						font-weight: 600;
+						line-height: 21px;
+					}
+					img{transition: transform 0.3s ease-in-out;}
+				}
+				&.df_fb-cats {
+					.df_fb-dropdown-btn{
+						width: 300px;
+					}
+				}
+				&.df_fb-sorts .df_fb-dropdown-btn{
+					width: 100px;
+				}
+			}
+			.df_fb-dropdown-value{
+				position: absolute;
+				right: 0px;
+				width: 300px;
+				background-color: #fff;
+				padding: 12px;
+    			border-radius: 16px;
+				box-shadow: 0px 0px 10px 0px #1724540A, 0px 0px 20px 0px #1724540F;
+				margin-top: 16px;
+				z-index: -1;
+				opacity: 0;
+				transition: opacity 0.3s ease-in-out;
+				ul {
+					list-style-type: none !important;
+					padding: 0px !important;
+					li{
+						margin-bottom: 8px;
+						padding: 7px 16px;
+						font-size: 14px;
+						line-height: 21px;
+						font-weight: 400;
+						border-radius: 4px;
+						&:hover{
+							cursor: pointer;
+							background-color: $lite-purple;
+						}
+						a{color: $primary-black;}
+					}
+				}
+			}
+		}
+	}
+	.df_fb-rotate-icon img{
+		transform: rotate(180deg);
+	}
+	.df_fb-filter-btn{
+		// border: 1px solid #d0bafc;
+		cursor: pointer;
+		border-width: 0px;
+		border-radius: 35px;
+		padding: 12px 20px;
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 21px;
+		background-color: #661FF4;
+		color: #fff;
+	}
+
+	// body content
+	.df_fb-items-wrapper{
+		display: grid;
+		grid-template-columns: repeat(3,1fr);
+		gap: 24px;
+		@media (max-width: 1024px) {
+			grid-template-columns: repeat(2,1fr);
+		}
+		@media (max-width: 564px) {
+			grid-template-columns: repeat(1,1fr);
+		}
+		.df_fb-item{
+			background-color: #ffffff;
+			border-radius: 16px;
+			overflow: hidden;
+			&:hover{
+				box-shadow: 5px 5px 100px 0px rgba(59,11,176,0.1);
+				.df_fb-item-image{
+					img{
+						filter: blur(2px);
+						transform: scale(1.08);
+					}
+					.df_fb-item-overlay{opacity: 1;}
+				}
+			}
+			.df_fb-item-image{
+				position: relative;
+				overflow: hidden;
+				// &:hover{
+				// 	img{filter: blur(2px);}
+				// 	.df_fb-item-overlay{opacity: 1;}
+				// }
+				img{transition: all 0.2s ease-in-out;}
+				.df_fb-item-overlay{
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: rgba(0, 0, 0, 0.2);
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					opacity: 0;
+					transition: opacity 0.2s ease-in-out;
+				}
+			}
+			.df_fb-item-content{
+				padding: 20px;
+				display: flex;
+				justify-content: space-between;
+			}
+			.df_fb-item-title{
+				font-size: 16px;
+				font-weight: 500;
+			}
+			.df_fb-item-cats{
+				span{
+					color: $primary-black;
+					background-color: $lite-purple;
+					font-size: 12px;
+					line-height: 18px;
+					font-weight: 500;
+					display: inline-block;
+					padding: 4px 12px;
+					border-radius: 28px;
+				}
+			}
+
+		}
+	}
+}

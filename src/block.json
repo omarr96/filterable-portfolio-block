@@ -1,0 +1,74 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/df-filterable-block",
+	"version": "0.1.0",
+	"title": "Df Filterable Block",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Example block scaffolded with Create Block tool.",
+	"example": {},
+	"attributes": {
+		"queryId": {
+			"type": "number"
+		},
+		"query": {
+			"type": "object",
+			"default": {
+				"perPage": "10",
+				"sort": "",
+				"pages": 0,
+				"offset": 0,
+				"postType": "dffilterableblock",
+				"order": "desc",
+				"orderBy": "date",
+				"author": "",
+				"search": "",
+				"exclude": [],
+				"sticky": "",
+				"inherit": true,
+				"taxQuery": null,
+				"parents": [],
+				"format": []
+			}
+		},
+		"categories": {
+			"type": "object",
+			"default": []
+		},
+		"portfolios": {
+			"type": "object",
+			"default": []
+		},
+		"tagName": {
+			"type": "string",
+			"default": "div"
+		},
+		"namespace": {
+			"type": "string"
+		},
+		"enhancedPagination": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"usesContext": [ "postType" ],
+	"providesContext": {
+		"queryId": "queryId",
+		"query": "query",
+		"categories": "categories",
+		"displayLayout": "displayLayout",
+		"enhancedPagination": "enhancedPagination"
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"layout": true,
+		"interactivity": true
+	},
+	"textdomain": "df-filterable-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}
