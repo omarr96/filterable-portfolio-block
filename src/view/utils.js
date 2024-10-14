@@ -10,7 +10,7 @@ export const appendCategoryItem = function( root, id, name ) {
 		allCategoryElement.setAttribute( 'data-value', id );
 	}
 
-	allCategoryElement.innerHTML = name;
+	allCategoryElement.innerHTML = name; 
 
 	//allCategoryElement.appendChild( AnchorElement );
 	root.appendChild( allCategoryElement );
@@ -22,3 +22,11 @@ export const removeSpecificClass = function( root, className ) {
 		otherItem.classList.remove( className );
 	} );
 };
+
+// find active items from list
+export const findActiveItem = ( param, val ) => {
+	const activeCat = param.querySelector('ul li.active');
+	if(activeCat){ return activeCat.getAttribute('data-value'); }
+	return val;
+}
+

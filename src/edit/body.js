@@ -11,6 +11,8 @@ export default function body( { attributes, setAttributes } ) {
     const POSTS_QUERY = { per_page: query.perPage, hide_empty: true, context: 'view', status: 'publish', _embed: true };
 	const { records: portfolios, isResolving } = useEntityRecords( 'postType', 'dffilterableblock', POSTS_QUERY );
 
+    console.log('portfolios:', portfolios);
+
     useEffect( () => {
 		setAttributes( { portfolios } );
 	}, [ portfolios ] );
@@ -25,7 +27,7 @@ export default function body( { attributes, setAttributes } ) {
                             return(
                                 <div className='df_fb-item'>
                                     <div className='df_fb-item-image'>
-                                        <img src={post._embedded['wp:featuredmedia'][0].source_url} alt={post.title.rendered} />
+                                        <img src={post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0].source_url} alt={post.title.rendered} />
                                         {/* overlay on hover */}
                                         <div className='df_fb-item-overlay'>
                                             <a href={ post.meta.df_fb_custom_url || '#'} className='df_fb-filter-btn'>{ __('View Website', 'df-filterable-block') }</a>

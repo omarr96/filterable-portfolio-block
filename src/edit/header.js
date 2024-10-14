@@ -77,7 +77,7 @@ export default function Header( { attributes, setAttributes } ) {
                 </div>
             </div>
 
-            <button className='df_fb-filter-btn'>{ __('Apply', 'df-filterable-block') }</button>
+            {/* <button className='df_fb-filter-btn'>{ __('Apply', 'df-filterable-block') }</button> */}
         </div>
     </div>
   )

@@ -32,6 +32,13 @@
 	.df_fb-load-more{
 		padding: 40px 0px;
 		text-align: center;
+		button{
+			box-shadow: 3px 3px 15px 0px #661FF41a;
+			font-weight: 600;
+			font-size: 18px;
+			line-height: 27px;
+			padding: 14px 24px;
+		}
 	}
 	#loadMoreButton:disabled {
 		background-color: gray; /* Change background color */
@@ -61,11 +68,20 @@
 			font-size: 32px;
 			line-height: 56px;
 			font-weight: 700;
+			@media (max-width: 564px) {
+				font-size: 24px;
+				line-height: 32px;
+				text-align: center;
+			}
 		}
 		.df_fb-filter-meta{
 			display: flex;
 			gap: 20px;
 			align-items: center;
+			flex-wrap: wrap;
+			@media (max-width: 564px) {
+				justify-content: center;
+			}
 			.df_fb-filter-dropdown{
 				position: relative;
 				.df_fb-dropdown-btn{
@@ -89,6 +105,12 @@
 				}
 				&.df_fb-sorts .df_fb-dropdown-btn{
 					width: 100px;
+					@media (max-width: 1024px) {
+						width: 200px;
+					}
+					@media (max-width: 564px) {
+						width: 300px;
+					}
 				}
 			}
 			.df_fb-dropdown-value{
@@ -137,6 +159,9 @@
 		line-height: 21px;
 		background-color: #661FF4;
 		color: #fff;
+		&:hover{
+			background-color: #5C1CDC;
+		}
 	}
 
 	// body content

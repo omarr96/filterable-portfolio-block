@@ -29,13 +29,13 @@ export default function Header( { attributes } ) {
                 </div>
                 <div className='df_fb-dropdown-value'>
                     <ul>
-                        <li>{ __('Old', 'df-filterable-block') }</li>
-                        <li>{ __('New ', 'df-filterable-block') }</li>
+                        <li data-value = 'asc'>{ __('Old', 'df-filterable-block') }</li>
+                        <li data-value = 'desc'>{ __('New ', 'df-filterable-block') }</li>
                     </ul>
                 </div>
             </div>
 
-            <button className='df_fb-filter-btn'> { __('Apply', 'df-filterable-block') }</button>
+            {/* <button className='df_fb-filter-btn'> { __('Apply', 'df-filterable-block') }</button> */}
         </div>
     </div>
   )

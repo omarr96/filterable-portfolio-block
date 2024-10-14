@@ -17,14 +17,11 @@ class DF_FG_Initialization {
 	public function __construct() {
 		add_action( 'init', [ $this, 'post_type' ], 10 );
 		add_action( 'init', [ $this, 'register_taxonomy' ] );
-
-		add_action( 'wp_enqueue_scripts', [ $this, 'scripts' ] );
-
+		// add_action( 'wp_enqueue_scripts', [ $this, 'scripts' ] );
 		add_action('add_meta_boxes', [ $this, 'add_custom_url_meta_box' ] );
 		add_action('save_post', [ $this, 'save_custom_url_meta_box' ] );
 		add_action( 'init', [ $this, 'register_custom_url_meta' ] );
-
-		add_action( 'wp_head', 'add_noindex_to_post_type' );
+		add_action( 'wp_head', [ $this, 'add_noindex_to_post_type' ] );
 	}
 
 	/**
@@ -32,9 +29,9 @@ class DF_FG_Initialization {
 	 *
 	 * Only the styles for front-end should load here
 	 */
-	public function scripts() {
-		wp_enqueue_script( 'df_fb-frontend-scripts', plugin_dir_url( __DIR__ ) . 'build/view.js', array('jquery'), DF_FG_VERSION, true );
-	}
+	// public function scripts() {
+	// 	wp_enqueue_script( 'df_fb-frontend-scripts', plugin_dir_url( __DIR__ ) . 'build/view.js', array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'lodash' ), DF_FG_VERSION, true );
+	// }
 
 	/**
 	 * Register Custom Post Type
@@ -43,8 +40,8 @@ class DF_FG_Initialization {
 	function post_type() {
         // // Labels for the Custom Post Type
         $labels = [
-            'name'               => __('DF Filterable Galleries', DF_FG_TEXT_DOMAIN),
-            'singular_name'      => __('DF Filterable Gallery', DF_FG_TEXT_DOMAIN),
+            'name'               => __('DF Filterable Projects', DF_FG_TEXT_DOMAIN),
+            'singular_name'      => __('DF Filterable Project', DF_FG_TEXT_DOMAIN),
             'menu_name'          => __('DF Showcase', DF_FG_TEXT_DOMAIN),
             'name_admin_bar'     => __('DF Showcase', DF_FG_TEXT_DOMAIN),
             'add_new'            => __('Add New', DF_FG_TEXT_DOMAIN),
@@ -62,7 +59,7 @@ class DF_FG_Initialization {
 			'labels'                => $labels,
 			'public'                => true,
 			'show_ui'               => true,
-			// 'menu_icon'             => 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj4KCTxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIgoJCSAgZD0iTTQgMGE0IDQgMCAwIDAtNCA0djE2YTQgNCAwIDAgMCA0IDRoMTZhNCA0IDAgMCAwIDQtNFY0YTQgNCAwIDAgMC00LTR6bTMuNzUgNGExLjc1IDEuNzUgMCAxIDAgMCAzLjVoOWExLjc1IDEuNzUgMCAxIDAgMC0zLjV6bTAgNmExLjc1IDEuNzUgMCAxIDAgMCAzLjVoN2ExLjc1IDEuNzUgMCAxIDAgMC0zLjV6TTYgMTcuNzVhMS43NSAxLjc1IDAgMSAxIDMuNSAwIDEuNzUgMS43NSAwIDAgMS0zLjUgMCIKCQkgIGZpbGw9IiM5Y2ExYTgiLz4KPC9zdmc+Cgo=',
+			'menu_icon'             => 'dashicons-screenoptions',
 			'publicly_queryable'    => false,
 			'menu_position'         => 5,
 			'supports'           	=> array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields', 'comments'),
@@ -113,7 +110,7 @@ class DF_FG_Initialization {
 	public function add_custom_url_meta_box() {
 		add_meta_box(
 			'custom_url_meta_box',            // Unique ID for the meta box
-			__('Custom URL', 'df-filterable-block'),   // Meta box title
+			__('Project URL', 'df-filterable-block'),   // Meta box title
 			[$this, 'custom_url_meta_box_html'],   // Correct callback function name
 			'dffilterableblock',              // Post type
 			'side',                         // Location (normal, side, advanced)
@@ -125,7 +122,7 @@ class DF_FG_Initialization {
 		$custom_url = get_post_meta($post->ID, 'df_fb_custom_url', true); // Get current URL value
 		?>
 		<label for="custom_url_field"><?php _e('Enter URL', 'df-filterable-block'); ?></label>
-		<input type="text" id="custom_url_field" name="custom_url_field" value="<?php echo esc_attr($custom_url); ?>" size="50" />
+		<input type="text" id="custom_url_field" name="custom_url_field" value="<?php echo esc_attr($custom_url); ?>" size="25" />
 		<?php
 	}
 
@@ -157,6 +154,6 @@ class DF_FG_Initialization {
 			echo '<meta name="robots" content="noindex, nofollow" />' . "\n";
 		}
 	}
-	
+
 }
 new DF_FG_Initialization();

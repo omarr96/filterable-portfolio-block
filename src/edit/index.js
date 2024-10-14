@@ -34,8 +34,8 @@ export default function Edit( { attributes, setAttributes } ) {
 
 	const { query } = attributes;
 
-	const blockProps = useBlockProps();
-	const innerBlocksProps = useInnerBlocksProps( blockProps );
+	// const blockProps = useBlockProps();
+	// const innerBlocksProps = useInnerBlocksProps( blockProps );
 
 	const updateQuery = ( newQuery ) => setAttributes( { query: { ...query, ...newQuery } } );
 
