@@ -1,7 +1,6 @@
 // WordPress dependencies
 import domReady from '@wordpress/dom-ready';
 import apiFetch from '@wordpress/api-fetch';
-import { useEntityRecords } from '@wordpress/core-data';
 import { addQueryArgs } from '@wordpress/url';
 import { __ } from '@wordpress/i18n';
 
@@ -42,10 +41,7 @@ domReady( function() {
 				appendCategoryItem( categoryRoot, '*', __( 'All', 'df-filterable-block' ) );
 				// store all categories in line
 				const cleanCategories = [].map.call( categories, function( category ) {
-					if ( category.count && 1 !== category.id ) {
-						appendCategoryItem( categoryRoot, category.id, __( category.name, 'df-filterable-block' ) );
-					}
-					return { id: category.id, name: category.name, slug: category.slug };
+					appendCategoryItem( categoryRoot, category.id, __( category.name, 'df-filterable-block' ) );
 				} );
 				categoryRoot.setAttribute( 'class', 'df_fb-categories' );
 				categoryRoot.setAttribute( 'data-categories', JSON.stringify( cleanCategories ) );

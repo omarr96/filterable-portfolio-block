@@ -46,20 +46,9 @@
 		},
 		"namespace": {
 			"type": "string"
-		},
-		"enhancedPagination": {
-			"type": "boolean",
-			"default": false
 		}
 	},
 	"usesContext": [ "postType" ],
-	"providesContext": {
-		"queryId": "queryId",
-		"query": "query",
-		"categories": "categories",
-		"displayLayout": "displayLayout",
-		"enhancedPagination": "enhancedPagination"
-	},
 	"supports": {
 		"align": [ "wide", "full" ],
 		"html": false,

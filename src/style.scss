@@ -90,6 +90,8 @@
 					border: 1px solid #d0bafc;
 					border-radius: 35px;
 					padding: 12px 20px;
+					background-color: #fff;
+					color: #191c24;
 					cursor: pointer;
 					p{
 						font-size: 14px;
@@ -101,6 +103,21 @@
 				&.df_fb-cats {
 					.df_fb-dropdown-btn{
 						width: 300px;
+					}
+					.df_fb-categories{
+						max-height: 420px;
+    					overflow-y: auto;
+						box-sizing: border-box;
+						&::-webkit-scrollbar{
+							width: 6px;
+						}
+						&::-webkit-scrollbar-thumb {
+							background-color: #d0bafc;    /* Color of the scrollbar thumb */
+							border-radius: 10px;       /* Optional: Round the corners of the scrollbar thumb */
+						  }
+						&::-webkit-scrollbar-thumb:hover {
+							background-color: #be9ffb;    /* Darken the scrollbar on hover */
+						  }
 					}
 				}
 				&.df_fb-sorts .df_fb-dropdown-btn{
