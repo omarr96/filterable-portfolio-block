@@ -58,15 +58,16 @@
                 const visibleItems = Array.from(dfItemsContainer.querySelectorAll(".df_fb-item"))
                 .filter(item => item.style.display === "block");
             
-                // Sort based on text content or other criteria
+                // Sort based on the data-created attribute (date and time)
                 visibleItems.sort((a, b) => {
-                    const aText = a.textContent.trim();
-                    const bText = b.textContent.trim();
-            
+                    // Parse dates from the data-created attribute
+                    const aDate = new Date(a.getAttribute("data-created"));
+                    const bDate = new Date(b.getAttribute("data-created"));
+
                     if (order === "asc") {
-                        return aText.localeCompare(bText); // Ascending order
+                        return aDate - bDate; // Ascending order
                     } else {
-                        return bText.localeCompare(aText); // Descending order
+                        return bDate - aDate; // Descending order
                     }
                 });
         

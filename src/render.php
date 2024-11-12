@@ -1,12 +1,4 @@
 <?php
-
-function fetchCategory( $taxonomy ){
-    $categories = get_terms( [
-        'taxonomy' => $taxonomy,
-        'hide_empty' => true, // Only show categories that have posts
-    ] );
-}
-
 function df_filterable_block_render_callback( $attributes ) {
     
     // final output to show
@@ -17,7 +9,6 @@ function df_filterable_block_render_callback( $attributes ) {
     $module_parent_id = $attributes['query']['parent'];
 
     $output = '<div class="wp-block-create-block-df-filterable-block" id="df_fb-showcase">
-            <div class="df_fb-loader-wrapper"><div class="df_fb-loader"></div></div>
             <div class="df_fb-wrapper">';
 
             if($postType === 'dffilterablelayout'){
@@ -95,7 +86,7 @@ function df_filterable_block_render_callback( $attributes ) {
                     }
                 $output .= '</div>';
 
-                $output .= '<div class="df_fb-load-more"><button class="df_fb-filter-btn" id="df_fb-load-more-btn">'.__('Load More', 'df-filterable-block').'</button></div>
+                $output .= '<div class="df_fb-load-more"><button class="df_fb-filter-btn" id="df_fb-load-more-btn">'.__('Load More', DF_FG_TEXT_DOMAIN).'</button></div>
                         </div>';
                   
             }
@@ -104,14 +95,14 @@ function df_filterable_block_render_callback( $attributes ) {
 
                 // HEADER CONTENT
                 $output .= '<div class="df_fb-header '.$postType.'-header"><div class="df_fb-header-title">
-                    <h2>'.__("Filter Divi Website Examples", "df-filterable-block").'</h2>
+                    <h2>'.__("Filter Divi Website Examples", DF_FG_TEXT_DOMAIN).'</h2>
                 </div>';
 
                 $output .= '<div class="df_fb-filter-meta">';
 
                 $output .= '<div class="df_fb-filter-dropdown df_fb-cats">
                         <div class="df_fb-dropdown-btn">
-                            <p>'.__("Categories", "df-filterable-block").'</p>
+                            <p>'.__("Categories", DF_FG_TEXT_DOMAIN).'</p>
                             <img src="'.plugin_dir_url( __FILE__ ) .'images/arrow.png">
                         </div>';
 
@@ -135,13 +126,13 @@ function df_filterable_block_render_callback( $attributes ) {
 
                 $output .= '<div class="df_fb-filter-dropdown df_fb-sorts">
                     <div class="df_fb-dropdown-btn">
-                        <p>'.__("Sort", "df-filterable-block").'</p>
+                        <p>'.__("Sort", DF_FG_TEXT_DOMAIN).'</p>
                         <img src="'.plugin_dir_url( __FILE__ ) .'images/filter-horizontal.png">
                     </div>
                     <div class="df_fb-dropdown-value">
                         <ul>
-                            <li data-sort="asc">'.__("Old", "df-filterable-block").'</li>
-                            <li data-sort="desc">'.__("New", "df-filterable-block").'</li>
+                            <li data-sort="asc">'.__("Old", DF_FG_TEXT_DOMAIN).'</li>
+                            <li data-sort="desc">'.__("New", DF_FG_TEXT_DOMAIN).'</li>
                         </ul>
                     </div>
                 </div>';
@@ -175,16 +166,16 @@ function df_filterable_block_render_callback( $attributes ) {
                             }
                         }
 
-                        // Convert the category slugs array to a string
-                        $data_categories = implode(' ', $category_slugs);
+                        $data_categories = implode(' ', $category_slugs); // Convert the category slugs array to a string
+
+                        $created_timestamp = get_the_date('Y-m-d H:i:s');
 
                         $preview_url = get_post_meta( get_the_ID(), 'df_fb_custom_url', true );
 
-                        // Fetch featured image URL
                         $featured_img_url = get_the_post_thumbnail_url( get_the_ID(), 'full' ); // Use 'full' or any other size like 'medium', 'large'
             
                         // Customize the output as needed
-                        $output .= '<div class="df_fb-item '.$data_categories.'" style="display:block;">';
+                        $output .= '<div class="df_fb-item '.$data_categories.'" data-created="' . esc_attr($created_timestamp) . '" style="display:block;">';
                         $output .= '<div class="df_fb-item-image">'.get_the_post_thumbnail().'<div class="df_fb-item-overlay"><a href="' . $preview_url . '" class="df_fb-filter-btn">View Website</a></div></div>';
                         $output .= '<div class="df_fb-item-content">';
                         $output .= '<p class="df_fb-item-title">' . get_the_title() . '</p>';
