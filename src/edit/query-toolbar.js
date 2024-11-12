@@ -12,7 +12,8 @@ import { settings } from '@wordpress/icons';
 
 export default function QueryToolbar({
 	attributes: { query },
-	setQuery
+	setQuery,
+    type
 }) {
 
   return (
@@ -52,12 +53,31 @@ export default function QueryToolbar({
                                     value={ query.perPage }
                                     isDragEnabled={ false }
                                 />
+                                { type === 'page' && 
+                                    <NumberControl
+                                        __unstableInputWidth="120px"
+                                        label={ __( 'Parent Page ID', 'df-filterable-block' ) }
+                                        labelPosition="edge"
+                                        min={ 1 }
+                                        onChange={ ( value ) => {
+                                            if (isNaN( value )) {
+                                                return;
+                                            }
+                                            setQuery( {
+                                                parent: value,
+                                            } );
+                                        } }
+                                        step="1"
+                                        value={ query.parent }
+                                        isDragEnabled={ false }
+                                    />
+                                }
+                                
                             </BaseControl>
                         </>
                     ) }
                 />
             </ToolbarGroup>
-        
     </>
   )
 }

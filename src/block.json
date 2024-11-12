@@ -19,7 +19,8 @@
 				"sort": "",
 				"pages": 0,
 				"offset": 0,
-				"postType": "dffilterableblock",
+				"postType": "",
+				"taxonomy": "",
 				"order": "desc",
 				"orderBy": "date",
 				"author": "",
@@ -28,24 +29,9 @@
 				"sticky": "",
 				"inherit": true,
 				"taxQuery": null,
-				"parents": [],
+				"parent": "",
 				"format": []
 			}
-		},
-		"categories": {
-			"type": "object",
-			"default": []
-		},
-		"portfolios": {
-			"type": "object",
-			"default": []
-		},
-		"tagName": {
-			"type": "string",
-			"default": "div"
-		},
-		"namespace": {
-			"type": "string"
 		}
 	},
 	"usesContext": [ "postType" ],
@@ -55,9 +41,10 @@
 		"layout": true,
 		"interactivity": true
 	},
+	"render": "file:./render.php",
 	"textdomain": "df-filterable-block",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
-	"viewScript": "file:./view.js"
+	"viewScript": "file:./frontendScripts.js"
 }

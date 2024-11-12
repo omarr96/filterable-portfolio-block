@@ -9,4 +9,44 @@
 	#df_fb-preloader{
 		display: none;
 	}
+
+	.df_fb-preview-wrap{
+		max-width: 800px;
+    	margin: 0 auto;
+	}
+	.df_fb-postType-items{
+		display: flex;
+		justify-content: space-between;
+		text-align: center;
+		gap: 20px;
+	}
+	.df_fb-card{
+		box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    	padding: 30px;
+    	border-radius: 10px;
+	}
+	.df_fb-card-title{
+		font-size: 18px;
+	}
+	.df_fb-card-btn{
+		width: 100%;
+		border: 1px solid #414141;
+		color: #272727;
+		margin-top: 16px;
+		text-align: center;
+		justify-content: center;
+		font-size: 15px;
+		border-radius: 35px;
+    	height: 42px;
+		transition: all 0.2s ease-in-out;
+		&:hover{
+			background-color: #414141;
+			color: #fff;
+		}
+	}
+	// header content
+	.df_fb-header{
+		position: relative;
+		top: unset;
+	}
 }

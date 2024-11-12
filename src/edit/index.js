@@ -13,8 +13,7 @@ import { __ } from '@wordpress/i18n';
  */
 import {
 	BlockControls,
-	useBlockProps,
-	useInnerBlocksProps,
+	useBlockProps
 } from '@wordpress/block-editor';
 
 /**
@@ -29,28 +28,38 @@ import '../editor.scss';
 import Header from './header';
 import Body from './body';
 import QueryToolbar from './query-toolbar';
+import Preview from './preview';
 
 export default function Edit( { attributes, setAttributes } ) {
 
 	const { query } = attributes;
-
-	// const blockProps = useBlockProps();
-	// const innerBlocksProps = useInnerBlocksProps( blockProps );
-
 	const updateQuery = ( newQuery ) => setAttributes( { query: { ...query, ...newQuery } } );
 
+	const isPreview = query.postType;
+
+	console.log('attributes: ', attributes);
+	
 	return (
 		<>
 			<BlockControls>
-				<QueryToolbar
+				{isPreview && <QueryToolbar
 					attributes={ attributes }
 					setQuery={ updateQuery }
-				/>
+					type = { query.postType }
+				/>}
 			</BlockControls>
+
 			<div { ...useBlockProps() }>
 				<div className={'df_fb-wrapper'}>
-					<Header attributes={attributes} setAttributes={setAttributes}/>
-					<Body attributes={attributes} setAttributes={setAttributes}/>
+					{
+						isPreview ? 
+						<>
+							<Header attributes={attributes} setAttributes={setAttributes}/>
+							<Body attributes={attributes} setAttributes={setAttributes}/>
+						</>
+						: 
+						<Preview attributes={attributes} setQuery={ updateQuery }/>
+					}
 				</div>
 			</div>
 		</>
